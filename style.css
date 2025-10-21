@@ -205,19 +205,25 @@ input[type="checkbox"] {
 }
 
 /* Buttons */
-.button-cell {
-  padding: 20px 20px;
+.buttons {
+  padding: 20px;
+  text-align: center;
+ 
+.buttons input[type="submit"],
+.buttons input[type="reset"]
+.buttons input[type="review"] {
   margin: auto;
   font-weight: bold;
   background-color: #7b7b7b;
   border: 1px solid #aaa;
   color: white;
   border-radius: 4px;
-  text-align: center;
   cursor: pointer;
 }
 
-.button-cell: hover {
+.buttons input[type="submit"]: hover,
+.buttons input[type="reset"]: hover,
+.buttons input[type="review"]: hover {
   background-color: #993300;
 }
 
@@ -240,6 +246,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
