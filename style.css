@@ -205,8 +205,7 @@ input[type="checkbox"] {
 }
 
 /* Buttons */
-input[type="submit"],
-input[type="reset"] {
+.button-cell {
   padding: 20px 20px;
   margin: auto;
   font-weight: bold;
@@ -218,8 +217,8 @@ input[type="reset"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover {
+.button-cell: hover,
+.button-cell: hover {
   background-color: #993300;
 }
 
@@ -242,6 +241,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
