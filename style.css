@@ -208,13 +208,14 @@ input[type="checkbox"] {
 .buttons {
   padding: 20px;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
  
 .buttons input[type="submit"],
 .buttons input[type="reset"]
 .buttons input[type="review"] {
   margin: auto;
+  padding: 10px 20px;
   font-weight: bold;
   background-color: #7b7b7b;
   border: 1px solid #aaa;
@@ -248,6 +249,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
