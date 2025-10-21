@@ -208,6 +208,8 @@ input[type="checkbox"] {
 .buttons {
   padding: 20px;
   text-align: center;
+  margin-top: 20px;
+}
  
 .buttons input[type="submit"],
 .buttons input[type="reset"]
@@ -246,6 +248,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
