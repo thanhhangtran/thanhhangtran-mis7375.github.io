@@ -208,7 +208,7 @@ input[type="checkbox"] {
 input[type="submit"],
 input[type="reset"] {
   padding: 10px 20px;
-  margin: 10px;
+  margin: auto;
   font-weight: bold;
   background-color: #7b7b7b;
   border: 1px solid #aaa;
@@ -242,5 +242,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
