@@ -4,7 +4,7 @@ Author: Thanh Tran
 Date created: Sept 15, 2025
 Date last edited: Sept 15, 2025
 Version: 1.0
-Description: External stylesheet for patient-form.html
+Description: External stylesheet for index.html
 */
 
 body {
@@ -241,3 +241,4 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
