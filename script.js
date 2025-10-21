@@ -1,3 +1,9 @@
+function displayDate() {
+  const today = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+  document.getElementById("dateDisplay").innerText = "Today Date: " + today.toLocaleDateString("en-US", options);
+  }
+
 function checkPasswordMatch() {
   const pw = document.getElementById("password").value;
   const repw = document.getElementById("repassword").value;
