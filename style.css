@@ -1,0 +1,243 @@
+ /*
+Program name: style.css
+Author: Thanh Tran
+Date created: Sept 15, 2025
+Date last edited: Sept 15, 2025
+Version: 1.0
+Description: External stylesheet for patient-form.html
+*/
+
+body {
+  background-color: #e6f2f2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: 'Georgia', serif;
+  color: #cc3300;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-family: 'Georgia', serif;
+  color: #000000;
+}
+
+/* Banner styling */
+#banner {
+  background-color: #cce5ff;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 2px solid #999;
+}
+
+#banner img {
+  margin-left: 10px;
+  height: 100px;
+}
+
+#dateDisplay {
+  text-align: right;
+  margin-left: auto;
+  margin-right: 20px;
+    color: #555;
+}
+
+/* Form container */
+form {
+  background-color: #dfdfdf;
+  padding: 20px;
+  margin: 30px auto;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Fieldset and legend */
+fieldset {
+  margin-bottom: 20px;
+  border: 1px solid #000000;
+  padding: 15px;
+}
+
+legend {
+  text-align: center;
+  font-weight: bold;
+  color: #000000;
+  font-size: 1.4em;
+  margin-bottom: -15px;
+}
+
+/* Table layout */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Section headers */
+.section-header td {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 15px;
+  color: #000000;  
+}
+
+/* Labels and inputs */
+
+  /* Create an Account Section */
+  .account-row td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding-right: 40px;
+    margin-bottom: 5px;
+    margin-top: -5px;
+  }
+
+  .account-row label {
+    text-align: right;
+    white-space: nowrap;
+    margin-right: 0px;
+    width: 150px;
+  }
+
+  .account-row input {
+    width: 250px !important;
+  }
+
+    /* Password requirements */
+    .centered-cell {
+      display: flex;
+      justify-content: center;
+      margin-left: 200px;
+      margin-top: -15px;
+    }
+
+    #passwordreq {
+      font-size: 0.75em;
+      color: #555;
+      margin-top: 0px;
+      margin-bottom: 15px;
+      width: 250px;
+    }
+
+    .password-title {
+        margin-bottom: 6px;
+    }
+
+    #passwordreq ul {
+      text-align: left;
+      margin: 0 auto;
+      padding-left: 20px;
+    }
+
+  /* Personal Information Section */
+  label {
+    display: block;
+    white-space: nowrap;
+    text-align: right;
+    margin-top: 0px;
+    padding-right: 4px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+  
+  .personal-row td:nth-child(3) {
+    width: 8%;
+  }
+
+  .personal-row td:nth-child(4) {
+    padding-right: 6%;
+  }
+
+  /* Medical History Section */
+  .diagnosis-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* space between options */
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .diagnosis-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+/* Radio and checkbox groups */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+/* Slider */
+#health + div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 4px;
+}
+
+#health {
+  width: 100%;
+}
+
+/* Buttons */
+input[type="submit"],
+input[type="reset"] {
+  padding: 10px 20px;
+  margin: 10px;
+  font-weight: bold;
+  background-color: #7b7b7b;
+  border: 1px solid #aaa;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #993300;
+}
+
+/* Footer */
+#footer,
+footer {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  border-top: 2px solid #999;
+  margin-top: 40px;
+}
+
+a {
+  color: #006699;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
