@@ -1,0 +1,252 @@
+ <!--
+Program name: patient-form.html
+Author: Thanh Tran
+Date created: Sept 15, 2025
+Date last edited: Sept 15, 2025
+Version: 1.0
+Description: Patient registration form for WellNest Clinics
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>WellNest Clinics - Patient Registration</title>
+  <link href="style.css" rel="stylesheet">
+  <script>
+    function displayDate() {
+      const today = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+      document.getElementById("dateDisplay").innerText = "Today Date: " + today.toLocaleDateString("en-US", options);
+    }
+  </script>
+</head>
+
+<body onload="displayDate()">
+
+  <div id="banner">
+    <img src="medical-symbol-transparent-background-3.png" alt="Medical Symbol" height="100">
+    <h1>WellNest Clinics</h1>
+    <p id="dateDisplay"></p>
+  </div>
+
+  <form action="thankyou.html">
+    <fieldset>
+      <legend>Patient Registration Form</legend>
+      
+      <!-- Login Information -->
+      <table>
+        <tr class="section-header">
+          <td colspan="1">Create an Account</td>
+        </tr>
+        <tr class="account-row">
+          <td>
+            <label for="userid">Username:</label>
+            <input type="text" id="userid" name="userid" placeholder="Start with letter, no special chars" required>
+          </td>
+        </tr>
+        <tr class="account-row">
+          <td>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="***************" required>
+          </td>
+        </tr>
+        <tr>
+          <td class="centered-cell">
+            <div id="passwordreq">
+              <p class="password-title">Password must be:</p>
+              <ul>
+                <li>at least 8 characters</li>
+                <li>include 1 uppercase letter</li>
+                <li>include 1 lowercase letter</li>
+                <li>include 1 special character</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr class="account-row">
+          <td>
+            <label for="repassword">Re-enter Password:</label>
+            <input type="password" id="repassword" name="repassword" placeholder="***************" required>
+          </td>
+        </tr>
+      </table>
+    
+      <!-- Personal Information -->
+      <table>
+        <tr class="section-header">
+          <td colspan="6">Personal Information</td>
+        </tr>
+        <tr class="personal-row">
+          <td><label for="fname">First Name:</label></td>
+          <td><input type="text" id="fname" name="fname" required></td>
+          <td><label for="mi">M.I.:</label></td>
+          <td><input type="text" id="mi" name="mi" maxlength="1"></td>
+          <td><label for="lname">Last Name:</label></td>
+          <td><input type="text" id="lname" name="lname" required></td>
+        </tr>
+        <tr class="personal-row">
+          <td><label for="dob">Date of Birth:</label></td>
+          <td><input type="date" id="dob" name="dob" required></td>
+          <td><label for="ssn">SSN:</label></td>
+          <td><input type="password" id="ssn" name="ssn" maxlength="11" placeholder="***-**-****" required></td>
+          <td></td><td></td>
+        </tr>
+        <tr>
+          <td><label for="addr1">Address Line 1:</label></td>
+          <td colspan="5"><input type="text" id="addr1" name="addr1" required></td>
+        </tr>
+        <tr>
+          <td><label for="addr2">Address Line 2:</label></td>
+          <td colspan="5"><input type="text" id="addr2" name="addr2"></td>
+        </tr>
+        <tr>
+          <td><label for="city">City:</label></td>
+          <td><input type="text" id="city" name="city" required></td>
+          <td><label for="state">State:</label></td>
+          <!-- Code for state selction taken from Jake Messinger https://profjake.w3spaces.com/MIS3371/homework1.html -->
+          <td>
+            <select id="state" name="state" required>
+              <option value="">Select</option>
+              <option value="AL">Alabama</option>
+              <option value="AK">Alaska</option>
+              <option value="AZ">Arizona</option>
+              <option value="AR">Arkansas</option>
+              <option value="CA">California</option>
+              <option value="CO">Colorado</option>
+              <option value="CT">Connecticut</option>
+              <option value="DE">Delaware</option>
+              <option value="DC">District Of Columbia</option>
+              <option value="FL">Florida</option>
+              <option value="GA">Georgia</option>
+              <option value="HI">Hawaii</option>
+              <option value="ID">Idaho</option>
+              <option value="IL">Illinois</option>
+              <option value="IN">Indiana</option>
+              <option value="IA">Iowa</option>
+              <option value="KS">Kansas</option>
+              <option value="KY">Kentucky</option>
+              <option value="LA">Louisiana</option>
+              <option value="ME">Maine</option>
+              <option value="MD">Maryland</option>
+              <option value="MA">Massachusetts</option>
+              <option value="MI">Michigan</option>
+              <option value="MN">Minnesota</option>
+              <option value="MS">Mississippi</option>
+              <option value="MO">Missouri</option>
+              <option value="MT">Montana</option>
+              <option value="NE">Nebraska</option>
+              <option value="NV">Nevada</option>
+              <option value="NH">New Hampshire</option>
+              <option value="NJ">New Jersey</option>
+              <option value="NM">New Mexico</option>
+              <option value="NY">New York</option>
+              <option value="NC">North Carolina</option>
+              <option value="ND">North Dakota</option>
+              <option value="OH">Ohio</option>
+              <option value="OK">Oklahoma</option>
+              <option value="OR">Oregon</option>
+              <option value="PA">Pennsylvania</option>
+              <option value="RI">Rhode Island</option>
+              <option value="SC">South Carolina</option>
+              <option value="SD">South Dakota</option>
+              <option value="TN">Tennessee</option>
+              <option value="TX">Texas</option>
+              <option value="UT">Utah</option>
+              <option value="VT">Vermont</option>
+              <option value="VA">Virginia</option>
+              <option value="WA">Washington</option>
+              <option value="WV">West Virginia</option>
+              <option value="WI">Wisconsin</option>
+              <option value="WY">Wyoming</option>
+            </select>
+          </td>
+          <td><label for="zip">Zip:</label></td>
+          <td><input type="text" id="zip" name="zip" placeholder="00000" required></td>
+        </tr>
+        <tr>
+          <td><label for="phone">Phone Number:</label></td>
+          <td><input type="text" id="phone" name="phone" placeholder="(000) 000-0000" required></td>
+          <td><label for="email">Email Address:</label></td>
+          <td colspan="3"><input type="email" id="email" name="email" placeholder="formatted name@domain.tld" required></td>
+        </tr>
+        <tr>
+          <td><label for="gender">Gender:</label></td>
+          <td colspan="5">
+            <input type="radio" id="gender" name="gender" value="male">Male
+            <input type="radio" name="gender" value="female">Female
+            <input type="radio" name="gender" value="other">Other
+          </td>
+        </tr>
+        <tr>
+          <td><label for="race">Race:</label></td>
+          <td colspan="5">
+            <input type="radio" id="race" name="race" value="white">White
+            <input type="radio" name="race" value="black">Black
+            <input type="radio" name="race" value="asian">Asian
+            <input type="radio" name="race" value="latino">Latino
+            <input type="radio" name="race" value="other">Other
+          </td>
+        </tr>
+        <tr>
+          <td><label for="insurance">Insurance Type:</label></td>
+          <td colspan="5">
+            <input type="radio" id="insurance" name="insurance" value="private">Private
+            <input type="radio" name="insurance" value="medicaid">Medicaid
+            <input type="radio" name="insurance" value="medicare">Medicare
+            <input type="radio" name="insurance" value="uninsured">Uninsured
+          </td>
+        </tr>
+
+        <!-- Medical History -->
+        <tr class="section-header">
+          <td colspan="6">Medical History</td>
+        </tr>
+        <tr>
+          <td colspan="6">Have you ever been diagnosed with:</td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <div class="diagnosis-group">
+              <label><input type="checkbox" name="diagnosis" value="hypertension"> Hypertension</label>
+              <label><input type="checkbox" name="diagnosis" value="hypotension"> Hypotension</label>
+              <label><input type="checkbox" name="diagnosis" value="hyperthyroidism"> Hyperthyroidism</label>
+              <label><input type="checkbox" name="diagnosis" value="heart"> Heart Disease</label>
+              <label>Other: <input type="text" name="diagnosis-other"></label>
+            </div>
+        </tr>
+        <tr>
+          <td colspan="6">On a scale of 1–10 (with 10 being perfectly healthy), how do you feel today?</td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <input type="range" id="health" name="health" min="1" max="10">
+            <div class="health-labels">
+              <span>Near Death</span>              
+              <span>Perfectly Healthy</span>
+            </div>
+          </td>
+        </tr>
+
+
+        <!-- Buttons -->
+        <tr>
+          <td colspan="6" style="text-align:center; padding-top:20px;">
+            <input type="reset" value="Clear and start over">
+            <input type="submit" value="Submit">
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+
+  <footer>
+    <p>WellNest Clinics | PO BOX 12345 | Houston, TX 77204</p>
+    <p>
+      <a href="https://facebook.com">Facebook</a> |
+      <a href="https://twitter.com">Twitter</a>
+    </p>
+  </footer>
+</body>
+</html>
