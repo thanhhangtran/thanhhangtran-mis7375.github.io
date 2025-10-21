@@ -217,7 +217,6 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-.button-cell: hover,
 .button-cell: hover {
   background-color: #993300;
 }
@@ -241,6 +240,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
