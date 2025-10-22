@@ -46,9 +46,11 @@ function updateSliderValue() {
   const max = parseInt(slider.max);
   const val = parseInt(slider.value);
   valueLabel.textContent = val;
+
   const percent = (val - min) / (max - min);
   const sliderWidth = slider.offsetWidth;
   const thumbOffset = percent * sliderWidth;
+
   valueLabel.style.left = `${thumbOffset}px`;
 }
 
