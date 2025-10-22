@@ -42,3 +42,21 @@ function reviewForm() {
   output += "</ul>";
   document.getElementById("reviewArea").innerHTML = output;
 }
+
+function validatePasswordStrength() {
+  const pw = document.getElementById("password").value;
+  const userid = document.getElementById("userid").value.toLowerCase();
+  const fname = document.getElementById("fname").value.toLowerCase();
+  const lname = document.getElementById("lname").value.toLowerCase();
+
+  const hasUpper = /[A-Z]/.test(pw);
+  const hasLower = /[a-z]/.test(pw);
+  const hasDigit = /\d/.test(pw);
+  const hasSpecial = /[!@#%^&*()\-_=+\\/><.,`~]/.test(pw);
+  const hasQuote = /["]/.test(pw);
+  const containsName = pw.toLowerCase().includes(userid) || pw.includes(fname) || pw.includes(lname);
+
+  if (!hasUpper || !hasLower || !hasDigit || !hasSpecial || hasQuote || containsName) {
+    alert("Password must include uppercase, lowercase, digit, special character, and must not contain your name or user ID.");
+  }
+}
