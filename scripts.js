@@ -45,18 +45,17 @@ function reviewForm() {
 
 function validatePasswordStrength() {
   const pw = document.getElementById("password").value;
-  const userid = document.getElementById("userid").value.toLowerCase();
-  const fname = document.getElementById("fname").value.toLowerCase();
-  const lname = document.getElementById("lname").value.toLowerCase();
-
+  const length = pw.length >= 8;
   const hasUpper = /[A-Z]/.test(pw);
   const hasLower = /[a-z]/.test(pw);
-  const hasDigit = /\d/.test(pw);
   const hasSpecial = /[!@#%^&*()\-_=+\\/><.,`~]/.test(pw);
-  const hasQuote = /["]/.test(pw);
-  const containsName = pw.toLowerCase().includes(userid) || pw.includes(fname) || pw.includes(lname);
+  toggleRequirement("length", length);
+  toggleRequirement("uppercase", hasUpper);
+  toggleRequirement("lowercase", hasLower);
+  toggleRequirement("special", hasSpecial);
+}
 
-  if (!hasUpper || !hasLower || !hasDigit || !hasSpecial || hasQuote || containsName) {
-    alert("Password must include uppercase, lowercase, digit, special character, and must not contain your name or user ID.");
-  }
+function toggleRequirement(id, isValid) {
+  const item = document.getElementById(id);
+  item.style.color = isValid ? "green" : "red";
 }
