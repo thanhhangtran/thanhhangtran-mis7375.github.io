@@ -213,6 +213,12 @@ input[type="checkbox"] {
   width: 100%;
 }
 
+#healthValue {
+  font-weight: bold;
+  margin-left: 10px;
+  color: #333;
+}
+
 /* Buttons */
 .buttons {
   padding: 20px;
@@ -258,6 +264,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
