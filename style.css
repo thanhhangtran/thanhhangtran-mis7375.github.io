@@ -129,6 +129,11 @@ table {
       width: 250px;
     }
 
+    #passwordreq li {
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
     .password-title {
         margin-bottom: 6px;
     }
@@ -249,6 +254,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
