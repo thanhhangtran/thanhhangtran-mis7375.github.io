@@ -215,8 +215,10 @@ Description: Patient registration form for WellNest Clinics
         </tr>
         <tr>
           <td colspan="6">
-            <input type="range" id="health" name="health" min="1" max="10" value="5" oninput="updateSliderValue()">
-            <span id="healthValue">5</span>
+            <div class="slider-wrapper">
+              <input type="range" id="health" name="health" min="1" max="10" value="5" oninput="updateSliderValue()">
+              <div id="healthValue">5</div>
+            </div>
             <div class="health-labels">
               <span>Near Death</span>              
               <span>Perfectly Healthy</span>
@@ -247,6 +249,7 @@ Description: Patient registration form for WellNest Clinics
   </footer>
 </body>
 </html>
+
 
 
 
