@@ -123,6 +123,7 @@ table {
 
     #passwordreq {
       font-size: 0.75em;
+      font-weight: bold;
       color: #555;
       margin-top: 0px;
       margin-bottom: 15px;
@@ -254,6 +255,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
