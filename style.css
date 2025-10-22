@@ -212,7 +212,7 @@ input[type="checkbox"] {
 
 #healthValue {
   position: absolute;
-  top: 30px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   font-weight: bold;
@@ -225,7 +225,7 @@ input[type="checkbox"] {
   justify-content: space-between;
   font-size: 0.9em;
   color: #666;
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 /* Buttons */
@@ -273,5 +273,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
