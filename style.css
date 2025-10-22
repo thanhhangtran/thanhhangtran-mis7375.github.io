@@ -219,6 +219,14 @@ input[type="checkbox"] {
   color: #333;
 }
 
+.health-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 4px;
+}
+
 /* Buttons */
 .buttons {
   padding: 20px;
@@ -264,19 +272,3 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
