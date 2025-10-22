@@ -59,3 +59,17 @@ function toggleRequirement(id, isValid) {
   const item = document.getElementById(id);
   item.style.color = isValid ? "green" : "red";
 }
+
+function validateDateRange(id, type) {
+  const input = document.getElementById(id);
+  const date = new Date(input.value);
+  const today = new Date();
+  const oldest = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+  if (type === "dob" && (date > today || date < oldest)) {
+    alert("Date of birth must be within the last 120 years and not in the future.");
+  }
+  if (type === "future" && date < today) {
+    alert("This date must be in the future.");
+  }
+}
+
