@@ -41,8 +41,15 @@ function truncateZip() {
 
 function updateSliderValue() {
   const slider = document.getElementById("health");
-  const output = document.getElementById("healthValue");
-  output.textContent = slider.value;
+  const valueLabel = document.getElementById("healthValue");
+  const min = parseInt(slider.min);
+  const max = parseInt(slider.max);
+  const val = parseInt(slider.value);
+  valueLabel.textContent = val;
+  const percent = (val - min) / (max - min);
+  const sliderWidth = slider.offsetWidth;
+  const thumbOffset = percent * sliderWidth;
+  valueLabel.style.left = `${thumbOffset}px`;
 }
 
 function reviewForm() {
