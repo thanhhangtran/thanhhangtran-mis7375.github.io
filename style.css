@@ -212,7 +212,7 @@ input[type="checkbox"] {
 
 #healthValue {
   position: absolute;
-  top: 30px; /* Adjust vertical spacing below slider */
+  top: 30px;
   left: 50%;
   transform: translateX(-50%);
   font-weight: bold;
@@ -273,4 +273,5 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
