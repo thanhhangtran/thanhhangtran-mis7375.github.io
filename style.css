@@ -201,12 +201,9 @@ input[type="checkbox"] {
 }
 
 /* Slider */
-#health + div {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9em;
-  color: #666;
-  margin-top: 4px;
+.slider-wrapper {
+  position: relative;
+  width: 100%;
 }
 
 #health {
@@ -214,9 +211,13 @@ input[type="checkbox"] {
 }
 
 #healthValue {
+  position: absolute;
+  top: 30px; /* Adjust vertical spacing below slider */
+  left: 50%;
+  transform: translateX(-50%);
   font-weight: bold;
-  margin-left: 10px;
   color: #333;
+  transition: left 0.1s ease;
 }
 
 .health-labels {
@@ -272,3 +273,4 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
