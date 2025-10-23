@@ -2,6 +2,7 @@ function displayDate() {
   const today = new Date();
   const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
   document.getElementById("dateDisplay").innerText = "Today Date: " + today.toLocaleDateString("en-US", options);
+  updateSliderValue();
   }
 
 function lowercaseUserID() {
