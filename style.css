@@ -149,16 +149,16 @@ table {
     }
     
     .password-check {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      position: relative;
+      gap: 10px;      
     }
 
     .inline-message {
       font-size: 0.8em;
       color: red;
       white-space: nowrap;
+      margin-left: 4px;
     }
 
   /* Personal Information Section */
@@ -286,3 +286,4 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
