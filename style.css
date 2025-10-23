@@ -157,7 +157,6 @@ table {
 
     .inline-message {
       font-size: 0.8em;
-      margin-top: 4px;
       color: red;
       white-space: nowrap;
     }
@@ -287,6 +286,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
