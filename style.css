@@ -152,7 +152,8 @@ table {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      max-width: 250px;
+      width: auto;
+      max-width: none;
       flex-shrink: 0;
     }
 
@@ -160,6 +161,7 @@ table {
       font-size: 0.8em;
       color: red;
       white-space: nowrap;
+      width: 320px;
       flex-shrink: 0;
     }
 
@@ -288,5 +290,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
