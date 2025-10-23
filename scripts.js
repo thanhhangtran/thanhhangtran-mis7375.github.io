@@ -30,8 +30,17 @@ function toggleRequirement(id, isValid) {
 function checkPasswordMatch() {
   const pw = document.getElementById("password").value;
   const repw = document.getElementById("repassword").value;
-  if (pw !== repw) {
-    alert("Passwords do not match.");
+  const message = document.getElementById("matchMessage");
+  if (repw === "") {
+    message.textContent = "";
+    return;
+  }
+  if (pw === repw) {
+    message.textContent = "Passwords match.";
+    message.style.color = "green";
+  } else {
+    message.textContent = "Passwords do not match.";
+    message.style.color = "red";
   }
 }
 
