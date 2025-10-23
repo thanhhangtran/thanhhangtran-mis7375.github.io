@@ -59,13 +59,13 @@ Description: Patient registration form for WellNest Clinics
             </div>
           </td>
         </tr>
-        <tr class="account-row repassword-row">
-          <td class="label-cell">
+        <tr class="account-row">
+          <td>
             <label for="repassword">Re-enter Password:</label>
           </td>
-          <td class="input-cell">
+          <td>
             <div class="password-check">
-              <input type="password" id="repassword" name="repassword" placeholder="***************" required oninput="checkPasswordMatch()">
+              <input type="password" id="repassword" name="repassword" placeholder="***************" required onblur="checkPasswordMatch()">
               <span id="matchMessage" class="inline-message"></span>
             </div>
           </td>
@@ -254,14 +254,3 @@ Description: Patient registration form for WellNest Clinics
   </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
