@@ -148,13 +148,27 @@ table {
       padding-left: 20px;
     }
     
+    .repassword-row td {
+      display: table-cell !important;
+      padding-right: 0;
+    }
+    
+    .label-cell {
+      text-align: right;
+      white-space: nowrap;
+      width: 150px;
+    }
+    
+    .input-cell {
+      padding-left: 0;
+    }
+    
     .password-check {
       display: flex;
       align-items: center;
       gap: 10px;
-      position: relative;
     }
-
+    
     .inline-message {
       font-size: 0.8em;
       color: red;
@@ -286,6 +300,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
