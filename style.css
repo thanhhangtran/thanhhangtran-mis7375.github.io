@@ -148,6 +148,12 @@ table {
       padding-left: 20px;
     }
 
+    .inline-message {
+      font-size: 0.8em;
+      margin-top: 4px;
+      color: red;
+    }
+
   /* Personal Information Section */
   label {
     display: block;
@@ -273,6 +279,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
