@@ -151,15 +151,18 @@ table {
     .password-check {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: nowrap;
+      gap: 10px;
     }
-
+    
+    .input-wrapper {
+      width: 250px;
+      flex-shrink: 0;
+    }
+    
     .inline-message {
       font-size: 0.8em;
       color: red;
       white-space: nowrap;
-      flex-grow: 0;
       flex-shrink: 0;
     }
 
@@ -288,6 +291,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
