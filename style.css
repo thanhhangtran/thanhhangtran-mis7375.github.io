@@ -151,14 +151,16 @@ table {
     .password-check {
       display: inline-flex;
       align-items: center;
-      gap: 10px;      
+      gap: 8px;
+      max-width: 250px;
+      flex-shrink: 0;
     }
 
     .inline-message {
       font-size: 0.8em;
       color: red;
       white-space: nowrap;
-      margin-left: 4px;
+      flex-shrink: 0;
     }
 
   /* Personal Information Section */
@@ -286,4 +288,5 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
