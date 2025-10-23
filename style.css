@@ -152,8 +152,7 @@ table {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      width: auto;
-      max-width: none;
+      max-width: 250px;
       flex-shrink: 0;
     }
 
@@ -289,6 +288,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
