@@ -161,8 +161,7 @@ table {
       font-size: 0.8em;
       color: red;
       white-space: nowrap;
-      width: 320px;
-      flex-shrink: 0;
+      flex-shrink: 0;      
     }
 
   /* Personal Information Section */
@@ -290,6 +289,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
 
 
 
