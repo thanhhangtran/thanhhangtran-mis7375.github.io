@@ -2,8 +2,8 @@
 Program name: style.css
 Author: Thanh Tran
 Date created: Sept 15, 2025
-Date last edited: Sept 15, 2025
-Version: 1.0
+Date last edited: Oct 24, 2025
+Version: 2.0
 Description: External stylesheet for index.html
 */
 
@@ -149,21 +149,18 @@ table {
     }
     
     .password-check {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-    }
-    
-    .input-wrapper {
-      width: 250px;
+      gap: 8px;
+      max-width: 250px;
       flex-shrink: 0;
     }
-    
+
     .inline-message {
       font-size: 0.8em;
       color: red;
-      white-space: nowrap;
-      flex-shrink: 0;
+      white-space: nowrap;      
+      flex-shrink: 0;      
     }
 
   /* Personal Information Section */
