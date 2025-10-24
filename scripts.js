@@ -10,6 +10,9 @@ function displayDate() {
   const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
   document.getElementById("dateDisplay").innerText = "Today Date: " + today.toLocaleDateString("en-US", options);
   updateSliderValue();
+  applyPatternValidation();
+  setDOBRange();
+  validateDOBOnBlur();
   }
 
 function lowercaseUserID() {
@@ -34,6 +37,55 @@ function toggleRequirement(id, isValid) {
   item.style.color = isValid ? "green" : "red";
 }
 
+function applyPatternValidation() {
+  const patterns = {
+    fname: "[A-Za-z'-]{1,30}",
+    mi: "[A-Za-z]{1}",
+    lname: "[A-Za-z'\\-0-9]{1,30}",
+    ssn: "\\d{3}-\\d{2}-\\d{4}",
+    email: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+    phone: "\\d{3}-\\d{3}-\\d{4}",
+    addr1: ".{2,30}",
+    addr2: ".{2,30}",
+    city: ".{2,30}",
+    zip: "\\d{5}(-\\d{4})?",
+    userid: "^[A-Za-z][A-Za-z0-9_-]{4,29}$",
+    password: "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#%^&*()\\-_=+\\\\/><.,`~])[A-Za-z\\d!@#%^&*()\\-_=+\\\\/><.,`~]{8,30}"
+  };
+  for (const [id, pattern] of Object.entries(patterns)) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.setAttribute("pattern", pattern);
+    }
+  }
+}
+
+function setDOBRange() {
+  const dob = document.getElementById("dob");
+  const today = new Date();
+  const maxDate = today.toISOString().split("T")[0];
+  const minDateObj = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+  const minDate = minDateObj.toISOString().split("T")[0];
+  dob.setAttribute("max", maxDate);
+  dob.setAttribute("min", minDate);
+}
+
+function validateDOBOnBlur() {
+  const dobField = document.getElementById("dob");
+  dobField.addEventListener("blur", function () {
+    const enteredDate = new Date(this.value);
+    const today = new Date();
+    const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+    const maxDate = today;
+    if (enteredDate < minDate || enteredDate > maxDate) {
+      this.setCustomValidity("Date of birth must be between 120 years ago and today.");
+      this.reportValidity();
+    } else {
+      this.setCustomValidity("");
+    }
+  });
+}
+
 function checkPasswordMatch() {
   const pw = document.getElementById("password").value;
   const repw = document.getElementById("repassword").value;
@@ -53,7 +105,8 @@ function checkPasswordMatch() {
 
 function truncateZip() {
   const zip = document.getElementById("zip");
-  zip.value = zip.value.substring(0, 5);
+  const match = zip.value.match(/^(\d{5})/);
+  zip.value = match ? match[1] : "";
 }
 
 function updateSliderValue() {
@@ -81,5 +134,7 @@ function reviewForm() {
     output += `<li><strong>${id}:</strong> ${val}</li>`;
   });
   output += "</ul>";
-  document.getElementById("reviewArea").innerHTML = output;
+  const reviewBox = document.getElementById("reviewArea");
+  reviewBox.innerHTML = output;
+  reviewBox.classList.remove("hidden");
 }
