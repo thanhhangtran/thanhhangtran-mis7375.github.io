@@ -1,3 +1,10 @@
+// Program name: patient-form.html
+// Author: Thanh Tran
+// Date created: Oct 6, 2025
+// Date last edited: Oct 24, 2025
+// Version: 1.0
+// Description: External javascript sheet for index.html
+
 function displayDate() {
   const today = new Date();
   const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
