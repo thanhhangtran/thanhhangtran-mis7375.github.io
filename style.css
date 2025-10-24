@@ -209,6 +209,11 @@ table {
     white-space: nowrap;
   }
 
+  #medications {
+    margin-top: -15px;
+    margin-bottom: 5px;
+  }
+
 /* Radio and checkbox groups */
 input[type="radio"],
 input[type="checkbox"] {
@@ -240,7 +245,7 @@ input[type="checkbox"] {
   justify-content: space-between;
   font-size: 0.9em;
   color: #666;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 /* Buttons */
@@ -267,6 +272,22 @@ input[type="checkbox"] {
 .buttons input[type="reset"]:hover,
 .buttons input[type="button"]:hover {
   background-color: #993300;
+}
+
+/* Review Box */
+.hidden {
+  display: none;
+}
+
+#reviewArea {
+  margin: 30px auto;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  color: #333;
 }
 
 /* Footer */
