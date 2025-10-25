@@ -1,4 +1,4 @@
- <!--
+<!--
 Program name: patient-form.html
 Author: Thanh Tran
 Date created: Sept 15, 2025
@@ -25,7 +25,7 @@ Description: Patient registration form for WellNest Clinics
     <p id="dateDisplay"></p>
   </div>
 
-  <form action="thankyou.html">
+  <form action="thankyou.html" role="form" onsubmit="confirmBeforeSubmit(event)" onreset="clearReviewTable()">
     <fieldset>
       <legend>Patient Registration Form</legend>
       
@@ -43,7 +43,7 @@ Description: Patient registration form for WellNest Clinics
         <tr class="account-row">
           <td>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="***************" required onblur="validatePasswordStrength()">
+            <input type="password" id="password" name="password" placeholder="***************" required onblur="validatePasswordStrength()" aria-describedby="passwordreq">
           </td>
         </tr>
         <tr>
@@ -66,7 +66,7 @@ Description: Patient registration form for WellNest Clinics
               <div class="input-wrapper">
                 <input type="password" id="repassword" name="repassword" placeholder="***************" required onblur="checkPasswordMatch()">
               </div>
-              <span id="matchMessage" class="inline-message"></span>
+              <span id="matchMessage" class="inline-message" role="alert" aria-live="polite"></span>
             </div>
           </td>
         </tr>
@@ -166,35 +166,35 @@ Description: Patient registration form for WellNest Clinics
         </tr>
         <tr>
           <td><label for="phone">Phone Number:</label></td>
-          <td><input type="text" id="phone" name="phone" placeholder="(000) 000-0000" required></td>
+          <td><input type="text" id="phone" name="phone" placeholder="000-000-0000" required></td>
           <td><label for="email">Email Address:</label></td>
-          <td colspan="3"><input type="email" id="email" name="email" placeholder="formatted name@domain.tld" required></td>
+          <td colspan="3"><input type="email" id="email" name="email" placeholder="formatted name@domain.tld" title="Enter a valid email, e.g. name@domain.com" required></td>
         </tr>
         <tr>
           <td><label for="gender">Gender:</label></td>
           <td colspan="5">
-            <input type="radio" id="gender" name="gender" value="male">Male
-            <input type="radio" name="gender" value="female">Female
-            <input type="radio" name="gender" value="other">Other
+            <input type="radio" name="gender" value="male" aria-required="true">Male
+            <input type="radio" name="gender" value="female" aria-required="true">Female
+            <input type="radio" name="gender" value="other" aria-required="true">Other
           </td>
         </tr>
         <tr>
           <td><label for="race">Race:</label></td>
           <td colspan="5">
-            <input type="radio" id="race" name="race" value="white">White
-            <input type="radio" name="race" value="black">Black
-            <input type="radio" name="race" value="asian">Asian
-            <input type="radio" name="race" value="latino">Latino
-            <input type="radio" name="race" value="other">Other
+            <input type="radio" name="race" value="white"aria-required="true">White
+            <input type="radio" name="race" value="black" aria-required="true">Black
+            <input type="radio" name="race" value="asian" aria-required="true">Asian
+            <input type="radio" name="race" value="latino" aria-required="true">Latino
+            <input type="radio" name="race" value="other" aria-required="true">Other
           </td>
         </tr>
         <tr>
           <td><label for="insurance">Insurance Type:</label></td>
           <td colspan="5">
-            <input type="radio" id="insurance" name="insurance" value="private">Private
-            <input type="radio" name="insurance" value="medicaid">Medicaid
-            <input type="radio" name="insurance" value="medicare">Medicare
-            <input type="radio" name="insurance" value="uninsured">Uninsured
+            <input type="radio" name="insurance" value="private" aria-required="true">Private
+            <input type="radio" name="insurance" value="medicaid" aria-required="true">Medicaid
+            <input type="radio" name="insurance" value="medicare" aria-required="true">Medicare
+            <input type="radio" name="insurance" value="uninsured" aria-required="true">Uninsured
           </td>
         </tr>
 
@@ -212,17 +212,20 @@ Description: Patient registration form for WellNest Clinics
               <label><input type="checkbox" name="diagnosis" value="hypotension"> Hypotension</label>
               <label><input type="checkbox" name="diagnosis" value="hyperthyroidism"> Hyperthyroidism</label>
               <label><input type="checkbox" name="diagnosis" value="heart"> Heart Disease</label>
-              <label>Other: <input type="text" name="diagnosis-other" title="Enter any other condition not listed."></label>
+              <label for="diagnosis-other">Other:
+                <input type="text" id="diagnosis-other" name="diagnosis-other" title="Enter any other condition not listed.">
+              </label>
             </div>
         </tr>
         <tr>
-          <td colspan="6">Please list all current medications, dosage, and duration:</td>
+          <td colspan="6" id="medicationsDesc">Please list all current medications, dosage, and duration:</td>
         </tr>
         <tr>
           <td colspan="6">
             <label for="medications"></label><br>
-            <textarea id="medications" name="medications" rows="4" cols="80" 
-              placeholder="e.g., Lisinopril 10mg daily for 2 years" 
+            <textarea id="medications" name="medications" rows="4" cols="80"
+              aria-describedby="medicationsDesc"
+              placeholder="e.g., Lisinopril 10mg daily for 2 years"
               title="List each medication with its dosage and how long you've been taking it. Avoid using double quotes."></textarea>
           </td>
         </tr>
@@ -236,20 +239,19 @@ Description: Patient registration form for WellNest Clinics
               <span>Perfectly Healthy</span>
             </div>
             <div class="slider-wrapper">
-              <input type="range" id="health" name="health" min="1" max="10" value="5" oninput="updateSliderValue()">
+              <input type="range" id="health" name="health" min="1" max="10" value="5" oninput="updateSliderValue()" aria-describedby="healthValue">
               <div id="healthValue">5</div>
             </div>            
           </td>
         </tr>
 
-
         <!-- Buttons -->
         <tr>
           <td colspan="6">
             <div class="buttons">
-              <input type="button" value="Review" onclick="reviewForm()">
+              <input type="button" value="Review" onclick="confirmBeforeSubmit(event)">
               <input type="reset" value="Clear and start over">
-              <input type="submit" value="Submit">
+              <input type="button" value="Submit" onclick="confirmBeforeSubmit(event)">
           </td>
         </tr>
       </table>
