@@ -1,16 +1,9 @@
 // Program name: patient-form.html
 // Author: Thanh Tran
 // Date created: Oct 6, 2025
-// Date last edited: Oct 24, 2025
-// Version: 1.0
+// Date last edited: Nov 12, 2025
+// Version: 2.0
 // Description: External javascript sheet for index.html
-
-// Program name: patient-form.html
-// Author: Thanh Tran
-// Date created: Oct 6, 2025
-// Date last edited: Oct 24, 2025
-// Version: 1.0
-// Description: External javascript sheet for patient-form.html
 
 function displayDate() {
   const today = new Date();
@@ -341,6 +334,7 @@ function confirmBeforeSubmit(e) {
   const reviewBox = document.getElementById("reviewArea");
   if (!document.getElementById("confirmButton")) {
     const confirmBtn = document.createElement("button");
+    confirmBtn.type = "button";
     confirmBtn.id = "confirmButton";
     confirmBtn.textContent = "Confirm and Submit";
     confirmBtn.style.marginTop = "20px";
