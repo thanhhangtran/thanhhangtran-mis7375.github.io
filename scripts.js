@@ -44,7 +44,7 @@ function applyPatternValidation() {
     addr1: ".{2,30}",
     addr2: ".{2,30}",
     city: ".{2,30}",
-    zip: "\\d{5}(-\\d{4})?",
+    zip: "\\d{5}",
     userid: "^[A-Za-z][A-Za-z0-9_-]{4,19}$",
     password: "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#%^&*()\\-_=+\\\\/><.,`~])[A-Za-z\\d!@#%^&*()\\-_=+\\\\/><.,`~]{8,30}"
   };
@@ -95,9 +95,16 @@ function validatePasswordStrength() {
   if (containsPersonalInfo) {
     document.getElementById("password").setCustomValidity("Password cannot contain your username or name.");
     document.getElementById("password").reportValidity();
-  } else {
-    document.getElementById("password").setCustomValidity("");
+    return false;
   }
+  if (userid && pwLower === userid) {
+    document.getElementById("password").setCustomValidity("Password cannot be the same as your User ID.");
+    document.getElementById("password").reportValidity();
+    return false;
+  }
+  document.getElementById("password").setCustomValidity("");
+  return true;
+
 }
 
 function toggleRequirement(id, isValid) {
@@ -234,13 +241,101 @@ function updateSliderValue() {
   valueLabel.style.left = `${thumbOffset}px`;
 }
 
+function validateForm() {
+  let valid = true;
+  if (!validateUserID()) valid = false;
+  if (!validatePasswordStrength()) valid = false;
+  const pw = document.getElementById("password").value;
+  const repw = document.getElementById("repassword").value;
+  if (pw !== repw) {
+    const repwField = document.getElementById("repassword");
+    repwField.setCustomValidity("Passwords do not match.");
+    repwField.reportValidity();
+    valid = false;
+  } else {
+    document.getElementById("repassword").setCustomValidity("");
+  }
+  const fname = document.getElementById("fname");
+  if (!/^[A-Za-z'-]{1,30}$/.test(fname.value)) {
+    fname.setCustomValidity("First name must be 1–30 letters, apostrophes, or dashes.");
+    fname.reportValidity();
+    valid = false;
+  } else {
+    fname.setCustomValidity("");
+  }
+  const mi = document.getElementById("mi");
+  if (mi.value && !/^[A-Za-z]$/.test(mi.value)) {
+    mi.setCustomValidity("Middle initial must be a single letter.");
+    mi.reportValidity();
+    valid = false;
+  } else {
+    mi.setCustomValidity("");
+  }
+  const lname = document.getElementById("lname");
+  if (!/^[A-Za-z'\-0-9]{1,30}$/.test(lname.value)) {
+    lname.setCustomValidity("Last name must be 1–30 characters (letters, numbers, apostrophes, dashes).");
+    lname.reportValidity();
+    valid = false;
+  } else {
+    lname.setCustomValidity("");
+  }
+  const ssn = document.getElementById("ssn");
+  if (!/^\d{3}-\d{2}-\d{4}$/.test(ssn.value)) {
+    ssn.setCustomValidity("SSN must be in the format XXX-XX-XXXX.");
+    ssn.reportValidity();
+    valid = false;
+  } else {
+    ssn.setCustomValidity("");
+  }
+  const zip = document.getElementById("zip");
+  if (!/^\d{5}$/.test(zip.value)) {
+    zip.setCustomValidity("ZIP code must be exactly 5 digits.");
+    zip.reportValidity();
+    valid = false;
+  } else {
+    zip.setCustomValidity("");
+  }
+  const phone = document.getElementById("phone");
+  if (!/^\d{3}-\d{3}-\d{4}$/.test(phone.value)) {
+    phone.setCustomValidity("Phone must be in the format 000-000-0000.");
+    phone.reportValidity();
+    valid = false;
+  } else {
+    phone.setCustomValidity("");
+  }
+  const dob = document.getElementById("dob");
+  if (dob.value) {
+    const enteredDate = new Date(dob.value);
+    const today = new Date();
+    const minDate = new Date(today.getFullYear() - 120, today.getMonth(), today.getDate());
+    if (enteredDate < minDate || enteredDate > today) {
+      dob.setCustomValidity("Date of birth must be between 120 years ago and today.");
+      dob.reportValidity();
+      valid = false;
+    } else {
+      dob.setCustomValidity("");
+    }
+  }
+  const email = document.getElementById("email");
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(email.value)) {
+    email.setCustomValidity("Please enter a valid email address with a dot and domain.");
+    email.reportValidity();
+    valid = false;
+  } else {
+    email.setCustomValidity("");
+  }
+  if (!validateRadioGroups()) valid = false;
+  return valid;
+}
+
 function confirmBeforeSubmit(e) {
   e.preventDefault();
-  if (!document.querySelector("form").checkValidity()) {
-    document.querySelector("form").reportValidity();
+  const form = document.querySelector("form");
+  if (!validateForm() || !form.checkValidity()) {
+    form.reportValidity();
     return;
   }
-  if (!validateRadioGroups()) return;
   lowercaseUserID();
   reviewForm();
   const reviewBox = document.getElementById("reviewArea");
@@ -250,7 +345,7 @@ function confirmBeforeSubmit(e) {
     confirmBtn.textContent = "Confirm and Submit";
     confirmBtn.style.marginTop = "20px";
     confirmBtn.onclick = () => {
-      document.querySelector("form").submit();
+      form.submit();
     };
     reviewBox.appendChild(confirmBtn);
   }
