@@ -5,6 +5,13 @@
 // Version: 1.0
 // Description: External javascript sheet for index.html
 
+// Program name: patient-form.html
+// Author: Thanh Tran
+// Date created: Oct 6, 2025
+// Date last edited: Oct 24, 2025
+// Version: 1.0
+// Description: External javascript sheet for patient-form.html
+
 function displayDate() {
   const today = new Date();
   const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
@@ -26,11 +33,6 @@ function displayDate() {
   });
 }
 
-function lowercaseUserID() {
-  const userid = document.getElementById("userid");
-  userid.value = userid.value.toLowerCase();
-}
-
 function applyPatternValidation() {
   const patterns = {
     fname: "[A-Za-z'-]{1,30}",
@@ -43,7 +45,7 @@ function applyPatternValidation() {
     addr2: ".{2,30}",
     city: ".{2,30}",
     zip: "\\d{5}(-\\d{4})?",
-    userid: "^[A-Za-z][A-Za-z0-9_-]{4,29}$",
+    userid: "^[A-Za-z][A-Za-z0-9_-]{4,19}$",
     password: "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#%^&*()\\-_=+\\\\/><.,`~])[A-Za-z\\d!@#%^&*()\\-_=+\\\\/><.,`~]{8,30}"
   };
   for (const [id, pattern] of Object.entries(patterns)) {
@@ -51,6 +53,24 @@ function applyPatternValidation() {
     if (el) {
       el.setAttribute("pattern", pattern);
     }
+  }
+}
+
+function lowercaseUserID() {
+  const userid = document.getElementById("userid");
+  userid.value = userid.value.toLowerCase();
+}
+
+function validateUserID() {
+  const input = document.getElementById("userid");
+  const regex = /^[A-Za-z][A-Za-z0-9_-]{4,19}$/;
+  if (!regex.test(input.value)) {
+    input.setCustomValidity("User ID must start with a letter and be 5–20 characters. Only letters, numbers, dash, and underscore allowed.");
+    input.reportValidity();
+    return false;
+  } else {
+    input.setCustomValidity("");
+    return true;
   }
 }
 
@@ -180,20 +200,26 @@ document.getElementById("email").addEventListener("blur", function () {
 
 function validateRadioGroups() {
   const groups = ["gender", "race", "insurance"];
+  let allValid = true;
   for (const name of groups) {
     const selected = document.querySelector(`input[name="${name}"]:checked`);
     const radios = document.querySelectorAll(`input[name="${name}"]`);
     const firstRadio = radios[0];
     if (!selected) {
       firstRadio.setCustomValidity("Please select one option.");
-      firstRadio.reportValidity();
-      return false;
+      allValid = false;
     } else {
       firstRadio.setCustomValidity("");
     }
   }
-  return true;
+  return allValid;
 }
+
+["gender", "race", "insurance"].forEach(name => {
+  document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+    radio.addEventListener("change", validateRadioGroups);
+  });
+});
 
 function updateSliderValue() {
   const slider = document.getElementById("health");
@@ -229,7 +255,6 @@ function confirmBeforeSubmit(e) {
     reviewBox.appendChild(confirmBtn);
   }
 }
-
 
 function reviewForm() {
   const textFields = [
