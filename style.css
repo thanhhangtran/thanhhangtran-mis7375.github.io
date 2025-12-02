@@ -4,7 +4,7 @@ Author: Thanh Tran
 Date created: Sept 15, 2025
 Date last edited: Oct 24, 2025
 Version: 2.0
-Description: External stylesheet for index.html
+Description: External stylesheet.html
 */
 
 body {
@@ -343,4 +343,16 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* Privacy Policy Page */
+.privacy-title {
+  color: #2a6ebb;
+  margin-bottom: 15px;
+}
+
+.privacy-page {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  line-height: 1.6;
 }
