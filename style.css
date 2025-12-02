@@ -2,8 +2,8 @@
 Program name: style.css
 Author: Thanh Tran
 Date created: Sept 15, 2025
-Date last edited: Oct 24, 2025
-Version: 2.0
+Date last edited: Dec 6, 2025
+Version: 3.0
 Description: External stylesheet.html
 */
 
@@ -355,4 +355,23 @@ a:hover {
   font-family: Arial, sans-serif;
   margin: 20px;
   line-height: 1.6;
+}
+
+#privacy {
+  margin: 30px auto;
+  text-align: center;
+  max-width: 900px;
+}
+
+#privacy h2 {
+  margin-bottom: 15px;
+  color: #cc3300;
+}
+
+#privacy iframe {
+  border: 2px solid #999;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 700px;
+  height: 300px;
 }
