@@ -1,8 +1,8 @@
 // Program name: patient-form.html
 // Author: Thanh Tran
 // Date created: Oct 6, 2025
-// Date last edited: Nov 12, 2025
-// Version: 2.0
+// Date last edited: Dec 6, 2025
+// Version: 3.0
 // Description: External javascript sheet for index.html
 
 function displayDate() {
@@ -15,6 +15,7 @@ function displayDate() {
   formatSSN();
   formatPhone();
   updateSliderValue();
+  loadStates();
   document.querySelector("form").addEventListener("reset", clearReviewTable);
   document.getElementById("medications").addEventListener("blur", function () {
     if (/["]/.test(this.value)) {
