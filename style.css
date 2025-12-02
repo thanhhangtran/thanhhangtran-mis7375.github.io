@@ -13,6 +13,8 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  padding-top: 140px;
+  padding-bottom: 60px;
 }
 
 h1 {
@@ -29,11 +31,17 @@ h2 {
 /* Banner styling */
 #banner {
   background-color: #cce5ff;
+  position: fixed;
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 20px;
   border-bottom: 2px solid #999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 #banner img {
@@ -334,6 +342,11 @@ footer {
   font-size: 0.9em;
   border-top: 2px solid #999;
   margin-top: 40px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 a {
@@ -370,4 +383,3 @@ a:hover {
   max-width: 700px;
   height: 300px;
 }
-
