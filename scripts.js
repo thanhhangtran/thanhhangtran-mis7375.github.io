@@ -165,6 +165,17 @@ function formatSSN() {
   });
 }
 
+async function loadStates() {
+  try {
+    const response = await fetch("states.html");
+    if (!response.ok) throw new Error("Network error");
+    const data = await response.text();
+    document.getElementById("state").innerHTML = data;
+  } catch (err) {
+    console.error("Failed to load states:", err);
+  }
+}
+
 function truncateZip() {
   const zip = document.getElementById("zip");
   const match = zip.value.match(/^(\d{5})/);
