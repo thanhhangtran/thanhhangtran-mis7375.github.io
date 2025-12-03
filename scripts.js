@@ -172,6 +172,12 @@ document.getElementById("fname").addEventListener("blur", function() {
   }
 });
 
+document.getElementById("rememberMe").addEventListener("change", function() {
+  if (!this.checked) {
+    deleteCookie("fname");
+  }
+});
+
 function setDOBRange() {
   const dob = document.getElementById("dob");
   const today = new Date();
