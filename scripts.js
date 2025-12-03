@@ -25,6 +25,22 @@ function displayDate() {
       this.setCustomValidity("");
     }
   });
+  const savedName = getCookie("fname");
+  const greetingDiv = document.getElementById("greeting");
+  const fnameField = document.getElementById("fname");
+  if (savedName) {
+    const message = "Welcome back " + savedName +
+      ".\nPress OK to confirm or Cancel if this isn't " + savedName + ".";
+    if (confirm(message)) {
+      if (fnameField) fnameField.value = savedName;
+      greetingDiv.innerHTML = "Hello " + savedName + ", welcome back!";
+    } else {
+      deleteCookie("fname");
+      greetingDiv.innerHTML = "Hello New User!";
+    }
+  } else {
+    greetingDiv.innerHTML = "Hello New User!";
+  }
 }
 
 function applyPatternValidation() {
@@ -122,6 +138,39 @@ function checkPasswordMatch() {
     message.style.color = "red";
   }
 }
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function deleteCookie(name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+document.getElementById("fname").addEventListener("blur", function() {
+  const fname = this.value.trim();
+  const rememberMe = document.getElementById("rememberMe").checked;
+  if (rememberMe && fname.length >= 2) {
+    setCookie("fname", fname, 2);
+  } else {
+    deleteCookie("fname");
+  }
+});
 
 function setDOBRange() {
   const dob = document.getElementById("dob");
