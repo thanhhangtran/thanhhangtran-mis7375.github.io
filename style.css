@@ -182,8 +182,9 @@ table {
   }
 
   .remember-me {
-    text-align: center;
-    padding-top: 10px;
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #333;
   }
 
   input[type="text"],
@@ -384,4 +385,5 @@ a:hover {
   max-width: 700px;
   height: 300px;
 }
+
 
