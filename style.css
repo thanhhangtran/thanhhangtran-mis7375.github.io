@@ -54,6 +54,7 @@ h2 {
 }
 
 #greeting {
+  margin-top: 20px;
   text-align: center;
   font-size: 1.2em;
   font-weight: bold;
@@ -392,5 +393,6 @@ a:hover {
   max-width: 700px;
   height: 300px;
 }
+
 
 
