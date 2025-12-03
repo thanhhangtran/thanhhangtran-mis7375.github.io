@@ -25,6 +25,8 @@ Description: Patient registration form for WellNest Clinics
       <p id="dateDisplay"></p>
   </div>
   
+  <div id="greeting"></div>
+  
   <div id="main-content">
     <form action="thankyou.html" method="get" role="form" onsubmit="confirmBeforeSubmit(event)" onreset="clearReviewTable()">
       <fieldset>
@@ -87,6 +89,13 @@ Description: Patient registration form for WellNest Clinics
             <td><input type="text" id="lname" name="lname" required></td>
           </tr>
           <tr class="personal-row">
+            <td colspan="6" class="remember-me">
+              <label>
+                <input type="checkbox" id="rememberMe" checked> Remember Me
+              </label>
+            </td>
+          </tr>
+          <tr class="personal-row">
             <td><label for="dob">Date of Birth:</label></td>
             <td><input type="date" id="dob" name="dob" required></td>
             <td><label for="ssn">SSN:</label></td>
@@ -105,7 +114,6 @@ Description: Patient registration form for WellNest Clinics
             <td><label for="city">City:</label></td>
             <td><input type="text" id="city" name="city" required></td>
             <td><label for="state">State:</label></td>
-            <!-- Code for state selction taken from Jake Messinger https://profjake.w3spaces.com/MIS3371/homework1.html -->
             <td>
               <select id="state" name="state" required>
               </select>
@@ -223,3 +231,4 @@ Description: Patient registration form for WellNest Clinics
   </footer>
 </body>
 </html>
+
