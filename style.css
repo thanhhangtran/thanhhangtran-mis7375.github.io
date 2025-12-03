@@ -181,6 +181,11 @@ table {
     padding-right: 4px;
   }
 
+  .remember-me {
+    text-align: center;
+    padding-top: 10px;
+  }
+
   input[type="text"],
   input[type="password"],
   input[type="email"],
@@ -379,3 +384,4 @@ a:hover {
   max-width: 700px;
   height: 300px;
 }
+
