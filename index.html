@@ -21,190 +21,192 @@ Description: Patient registration form for WellNest Clinics
 
   <div id="banner">
     <img src="medical-symbol-transparent-background-3.png" alt="Medical Symbol" height="100">
-    <h1>WellNest Clinics</h1>
-    <p id="dateDisplay"></p>
-  </div>
-
-  <form action="thankyou.html" method="get" role="form" onsubmit="confirmBeforeSubmit(event)" onreset="clearReviewTable()">
-    <fieldset>
-      <legend>Patient Registration Form</legend>
-      
-      <!-- Login Information -->
-      <table>
-        <tr class="section-header">
-          <td colspan="1">Create an Account</td>
-        </tr>
-        <tr class="account-row">
-          <td>
-            <label for="userid">Username:</label>
-            <input type="text" id="userid" name="userid" required onblur="validateUserID()">
-          </td>
-        </tr>
-        <tr class="account-row">
-          <td>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="***************" required onblur="validatePasswordStrength()" aria-describedby="passwordreq">
-          </td>
-        </tr>
-        <tr>
-          <td class="centered-cell">
-            <div id="passwordreq">
-              <p class="password-title">Password must be:</p>
-              <ul>
-                <li id="length">at least 8 characters</li>
-                <li id="uppercase">include 1 uppercase letter</li>
-                <li id="lowercase">include 1 lowercase letter</li>
-                <li id="special">include 1 special character</li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <tr class="account-row">
-          <td>
-            <label for="repassword">Re-enter Password:</label>
-            <div class="password-check">
-              <div class="input-wrapper">
-                <input type="password" id="repassword" name="repassword" placeholder="***************" required onblur="checkPasswordMatch()">
+      <h1>WellNest Clinics</h1>
+      <p id="dateDisplay"></p>
+    </div>
+  
+    <div id="main-content">
+    <form action="thankyou.html" method="get" role="form" onsubmit="confirmBeforeSubmit(event)" onreset="clearReviewTable()">
+      <fieldset>
+        <legend>Patient Registration Form</legend>
+        
+        <!-- Login Information -->
+        <table>
+          <tr class="section-header">
+            <td colspan="1">Create an Account</td>
+          </tr>
+          <tr class="account-row">
+            <td>
+              <label for="userid">Username:</label>
+              <input type="text" id="userid" name="userid" required onblur="validateUserID()">
+            </td>
+          </tr>
+          <tr class="account-row">
+            <td>
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" placeholder="***************" required onblur="validatePasswordStrength()" aria-describedby="passwordreq">
+            </td>
+          </tr>
+          <tr>
+            <td class="centered-cell">
+              <div id="passwordreq">
+                <p class="password-title">Password must be:</p>
+                <ul>
+                  <li id="length">at least 8 characters</li>
+                  <li id="uppercase">include 1 uppercase letter</li>
+                  <li id="lowercase">include 1 lowercase letter</li>
+                  <li id="special">include 1 special character</li>
+                </ul>
               </div>
-              <span id="matchMessage" class="inline-message" role="alert" aria-live="polite"></span>
-            </div>
-          </td>
-        </tr>
-      </table>
-    
-      <!-- Personal Information -->
-      <table>
-        <tr class="section-header">
-          <td colspan="6">Personal Information</td>
-        </tr>
-        <tr class="personal-row">
-          <td><label for="fname">First Name:</label></td>
-          <td><input type="text" id="fname" name="fname" required></td>
-          <td><label for="mi">M.I.:</label></td>
-          <td><input type="text" id="mi" name="mi" maxlength="1" title="Enter a single letter. Leave blank if none."></td>
-          <td><label for="lname">Last Name:</label></td>
-          <td><input type="text" id="lname" name="lname" required></td>
-        </tr>
-        <tr class="personal-row">
-          <td><label for="dob">Date of Birth:</label></td>
-          <td><input type="date" id="dob" name="dob" required></td>
-          <td><label for="ssn">SSN:</label></td>
-          <td><input type="password" id="ssn" name="ssn" maxlength="11" title="Enter your Social Security Number" placeholder="***-**-****" required></td>
-          <td></td><td></td>
-        </tr>
-        <tr>
-          <td><label for="addr1">Address Line 1:</label></td>
-          <td colspan="5"><input type="text" id="addr1" name="addr1" required></td>
-        </tr>
-        <tr>
-          <td><label for="addr2">Address Line 2:</label></td>
-          <td colspan="5"><input type="text" id="addr2" name="addr2"></td>
-        </tr>
-        <tr>
-          <td><label for="city">City:</label></td>
-          <td><input type="text" id="city" name="city" required></td>
-          <td><label for="state">State:</label></td>
-          <!-- Code for state selction taken from Jake Messinger https://profjake.w3spaces.com/MIS3371/homework1.html -->
-          <td>
-            <select id="state" name="state" required>
-            </select>
-          </td>
-          <td><label for="zip">Zip:</label></td>
-          <td><input type="text" id="zip" name="zip" placeholder="00000" required onblur="truncateZip()">
-        </tr>
-        <tr>
-          <td><label for="phone">Phone Number:</label></td>
-          <td><input type="text" id="phone" name="phone" placeholder="000-000-0000" required></td>
-          <td><label for="email">Email Address:</label></td>
-          <td colspan="3"><input type="email" id="email" name="email" placeholder="formatted name@domain.tld" title="Enter a valid email, e.g. name@domain.com" required></td>
-        </tr>
-        <tr>
-          <td><label for="gender">Gender:</label></td>
-          <td colspan="5">
-            <input type="radio" name="gender" value="male" aria-required="true">Male
-            <input type="radio" name="gender" value="female" aria-required="true">Female
-            <input type="radio" name="gender" value="other" aria-required="true">Other
-          </td>
-        </tr>
-        <tr>
-          <td><label for="race">Race:</label></td>
-          <td colspan="5">
-            <input type="radio" name="race" value="white"aria-required="true">White
-            <input type="radio" name="race" value="black" aria-required="true">Black
-            <input type="radio" name="race" value="asian" aria-required="true">Asian
-            <input type="radio" name="race" value="latino" aria-required="true">Latino
-            <input type="radio" name="race" value="other" aria-required="true">Other
-          </td>
-        </tr>
-        <tr>
-          <td><label for="insurance">Insurance Type:</label></td>
-          <td colspan="5">
-            <input type="radio" name="insurance" value="private" aria-required="true">Private
-            <input type="radio" name="insurance" value="medicaid" aria-required="true">Medicaid
-            <input type="radio" name="insurance" value="medicare" aria-required="true">Medicare
-            <input type="radio" name="insurance" value="uninsured" aria-required="true">Uninsured
-          </td>
-        </tr>
-
-        <!-- Medical History -->
-        <tr class="section-header">
-          <td colspan="6">Medical History</td>
-        </tr>
-        <tr>
-          <td colspan="6">Have you ever been diagnosed with:</td>
-        </tr>
-        <tr>
-          <td colspan="6">
-            <div class="diagnosis-group">
-              <label><input type="checkbox" name="diagnosis" value="hypertension"> Hypertension</label>
-              <label><input type="checkbox" name="diagnosis" value="hypotension"> Hypotension</label>
-              <label><input type="checkbox" name="diagnosis" value="hyperthyroidism"> Hyperthyroidism</label>
-              <label><input type="checkbox" name="diagnosis" value="heart"> Heart Disease</label>
-              <label for="diagnosis-other">Other:
-                <input type="text" id="diagnosis-other" name="diagnosis-other" title="Enter any other condition not listed.">
-              </label>
-            </div>
-        </tr>
-        <tr>
-          <td colspan="6" id="medicationsDesc">Please list all current medications, dosage, and duration:</td>
-        </tr>
-        <tr>
-          <td colspan="6">
-            <label for="medications"></label><br>
-            <textarea id="medications" name="medications" rows="4" cols="80"
-              aria-describedby="medicationsDesc"
-              placeholder="e.g., Lisinopril 10mg daily for 2 years"
-              title="List each medication with its dosage and how long you've been taking it. Avoid using double quotes."></textarea>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="6">On a scale of 1–10 (with 10 being perfectly healthy), how do you feel today?</td>
-        </tr>
-        <tr>
-          <td colspan="6">
-            <div class="health-labels">
-              <span>Near Death</span>
-              <span>Perfectly Healthy</span>
-            </div>
-            <div class="slider-wrapper">
-              <input type="range" id="health" name="health" min="1" max="10" value="5" oninput="updateSliderValue()" aria-describedby="healthValue">
-              <div id="healthValue">5</div>
-            </div>            
-          </td>
-        </tr>
-
-        <!-- Buttons -->
-        <tr>
-          <td colspan="6">
-            <div class="buttons">
-              <input type="reset" value="Clear and start over">
-              <input type="button" value="Submit" onclick="confirmBeforeSubmit(event)">
-          </td>
-        </tr>
-      </table>
-    </fieldset>
-  </form>
-
+            </td>
+          </tr>
+          <tr class="account-row">
+            <td>
+              <label for="repassword">Re-enter Password:</label>
+              <div class="password-check">
+                <div class="input-wrapper">
+                  <input type="password" id="repassword" name="repassword" placeholder="***************" required onblur="checkPasswordMatch()">
+                </div>
+                <span id="matchMessage" class="inline-message" role="alert" aria-live="polite"></span>
+              </div>
+            </td>
+          </tr>
+        </table>
+      
+        <!-- Personal Information -->
+        <table>
+          <tr class="section-header">
+            <td colspan="6">Personal Information</td>
+          </tr>
+          <tr class="personal-row">
+            <td><label for="fname">First Name:</label></td>
+            <td><input type="text" id="fname" name="fname" required></td>
+            <td><label for="mi">M.I.:</label></td>
+            <td><input type="text" id="mi" name="mi" maxlength="1" title="Enter a single letter. Leave blank if none."></td>
+            <td><label for="lname">Last Name:</label></td>
+            <td><input type="text" id="lname" name="lname" required></td>
+          </tr>
+          <tr class="personal-row">
+            <td><label for="dob">Date of Birth:</label></td>
+            <td><input type="date" id="dob" name="dob" required></td>
+            <td><label for="ssn">SSN:</label></td>
+            <td><input type="password" id="ssn" name="ssn" maxlength="11" title="Enter your Social Security Number" placeholder="***-**-****" required></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <td><label for="addr1">Address Line 1:</label></td>
+            <td colspan="5"><input type="text" id="addr1" name="addr1" required></td>
+          </tr>
+          <tr>
+            <td><label for="addr2">Address Line 2:</label></td>
+            <td colspan="5"><input type="text" id="addr2" name="addr2"></td>
+          </tr>
+          <tr>
+            <td><label for="city">City:</label></td>
+            <td><input type="text" id="city" name="city" required></td>
+            <td><label for="state">State:</label></td>
+            <!-- Code for state selction taken from Jake Messinger https://profjake.w3spaces.com/MIS3371/homework1.html -->
+            <td>
+              <select id="state" name="state" required>
+              </select>
+            </td>
+            <td><label for="zip">Zip:</label></td>
+            <td><input type="text" id="zip" name="zip" placeholder="00000" required onblur="truncateZip()">
+          </tr>
+          <tr>
+            <td><label for="phone">Phone Number:</label></td>
+            <td><input type="text" id="phone" name="phone" placeholder="000-000-0000" required></td>
+            <td><label for="email">Email Address:</label></td>
+            <td colspan="3"><input type="email" id="email" name="email" placeholder="formatted name@domain.tld" title="Enter a valid email, e.g. name@domain.com" required></td>
+          </tr>
+          <tr>
+            <td><label for="gender">Gender:</label></td>
+            <td colspan="5">
+              <input type="radio" name="gender" value="male" aria-required="true">Male
+              <input type="radio" name="gender" value="female" aria-required="true">Female
+              <input type="radio" name="gender" value="other" aria-required="true">Other
+            </td>
+          </tr>
+          <tr>
+            <td><label for="race">Race:</label></td>
+            <td colspan="5">
+              <input type="radio" name="race" value="white"aria-required="true">White
+              <input type="radio" name="race" value="black" aria-required="true">Black
+              <input type="radio" name="race" value="asian" aria-required="true">Asian
+              <input type="radio" name="race" value="latino" aria-required="true">Latino
+              <input type="radio" name="race" value="other" aria-required="true">Other
+            </td>
+          </tr>
+          <tr>
+            <td><label for="insurance">Insurance Type:</label></td>
+            <td colspan="5">
+              <input type="radio" name="insurance" value="private" aria-required="true">Private
+              <input type="radio" name="insurance" value="medicaid" aria-required="true">Medicaid
+              <input type="radio" name="insurance" value="medicare" aria-required="true">Medicare
+              <input type="radio" name="insurance" value="uninsured" aria-required="true">Uninsured
+            </td>
+          </tr>
+  
+          <!-- Medical History -->
+          <tr class="section-header">
+            <td colspan="6">Medical History</td>
+          </tr>
+          <tr>
+            <td colspan="6">Have you ever been diagnosed with:</td>
+          </tr>
+          <tr>
+            <td colspan="6">
+              <div class="diagnosis-group">
+                <label><input type="checkbox" name="diagnosis" value="hypertension"> Hypertension</label>
+                <label><input type="checkbox" name="diagnosis" value="hypotension"> Hypotension</label>
+                <label><input type="checkbox" name="diagnosis" value="hyperthyroidism"> Hyperthyroidism</label>
+                <label><input type="checkbox" name="diagnosis" value="heart"> Heart Disease</label>
+                <label for="diagnosis-other">Other:
+                  <input type="text" id="diagnosis-other" name="diagnosis-other" title="Enter any other condition not listed.">
+                </label>
+              </div>
+          </tr>
+          <tr>
+            <td colspan="6" id="medicationsDesc">Please list all current medications, dosage, and duration:</td>
+          </tr>
+          <tr>
+            <td colspan="6">
+              <label for="medications"></label><br>
+              <textarea id="medications" name="medications" rows="4" cols="80"
+                aria-describedby="medicationsDesc"
+                placeholder="e.g., Lisinopril 10mg daily for 2 years"
+                title="List each medication with its dosage and how long you've been taking it. Avoid using double quotes."></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6">On a scale of 1–10 (with 10 being perfectly healthy), how do you feel today?</td>
+          </tr>
+          <tr>
+            <td colspan="6">
+              <div class="health-labels">
+                <span>Near Death</span>
+                <span>Perfectly Healthy</span>
+              </div>
+              <div class="slider-wrapper">
+                <input type="range" id="health" name="health" min="1" max="10" value="5" oninput="updateSliderValue()" aria-describedby="healthValue">
+                <div id="healthValue">5</div>
+              </div>            
+            </td>
+          </tr>
+  
+          <!-- Buttons -->
+          <tr>
+            <td colspan="6">
+              <div class="buttons">
+                <input type="reset" value="Clear and start over">
+                <input type="button" value="Submit" onclick="confirmBeforeSubmit(event)">
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </div>
+  
   <div id="reviewArea" class="hidden"></div>
 
   <section id="privacy">
@@ -221,4 +223,3 @@ Description: Patient registration form for WellNest Clinics
   </footer>
 </body>
 </html>
-
