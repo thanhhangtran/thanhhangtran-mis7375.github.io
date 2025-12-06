@@ -5,10 +5,17 @@
 // Version: 3.0
 // Description: External javascript sheet for index.html
 
-function displayDate() {
+function updateDateTime() {
   const now = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-  document.getElementById("dateDisplay").innerText = "Today Date: " + now.toLocaleDateString("en-US", options);
+  const options = { 
+    weekday: 'long', year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit', second: '2-digit' 
+  };
+  document.getElementById("dateDisplay").innerText =
+    "Today Date: " + now.toLocaleString("en-US", options);
+}
+
+function displayDate() {
   updateDateTime();
   setInterval(updateDateTime, 1000);
   applyPatternValidation();
