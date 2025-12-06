@@ -36,12 +36,90 @@ function displayDate() {
       greetingDiv.innerHTML = "Hello " + savedName + ", welcome back!";
     } else {
       deleteCookie("fname");
+      localStorage.clear();
       greetingDiv.innerHTML = "Hello New User!";
     }
   } else {
     greetingDiv.innerHTML = "Hello New User!";
   }
+  if (confirm(message)) {
+    if (fnameField) fnameField.value = savedName;
+    greetingDiv.innerHTML = "Hello " + savedName + ", welcome back!";
+    nonSecureFields.forEach(id => {
+      const el = document.getElementById(id);
+      const val = localStorage.getItem(id);
+      if (el && val) el.value = val;
+    });
+    ["gender","race","insurance"].forEach(name => {
+      const val = localStorage.getItem(name);
+      if (val) {
+        const radio = document.querySelector(`input[name="${name}"][value="${val}"]`);
+        if (radio) radio.checked = true;
+      }
+    });
+  }
 }
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function deleteCookie(name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+document.getElementById("fname").addEventListener("blur", function() {
+  const fname = this.value.trim();
+  const rememberMe = document.getElementById("rememberMe").checked;
+  if (rememberMe && fname.length >= 2) {
+    setCookie("fname", fname, 2);
+  } else {
+    deleteCookie("fname");
+  }
+});
+
+document.getElementById("rememberMe").addEventListener("change", function() {
+  if (!this.checked) {
+    deleteCookie("fname");
+  }
+});
+
+const nonSecureFields = [
+  "userid","fname","mi","lname","dob","email","phone",
+  "addr1","addr2","city","state","zip","gender","race","insurance","diagnosis-other","medications","health"
+];
+
+nonSecureFields.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener("blur", () => {
+      localStorage.setItem(id, el.value);
+    });
+  }
+});
+
+["gender","race","insurance","diagnosis"].forEach(name => {
+  document.querySelectorAll(`input[name="${name}"]`).forEach(el => {
+    el.addEventListener("change", () => {
+      localStorage.setItem(name, el.value);
+    });
+  });
+});
 
 function applyPatternValidation() {
   const patterns = {
@@ -138,45 +216,6 @@ function checkPasswordMatch() {
     message.style.color = "red";
   }
 }
-
-function setCookie(cname, cvalue, exdays) {
-  const d = new Date();
-  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  let expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-  let name = cname + "=";
-  let ca = document.cookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i].trim();
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-
-function deleteCookie(name) {
-  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
-
-document.getElementById("fname").addEventListener("blur", function() {
-  const fname = this.value.trim();
-  const rememberMe = document.getElementById("rememberMe").checked;
-  if (rememberMe && fname.length >= 2) {
-    setCookie("fname", fname, 2);
-  } else {
-    deleteCookie("fname");
-  }
-});
-
-document.getElementById("rememberMe").addEventListener("change", function() {
-  if (!this.checked) {
-    deleteCookie("fname");
-  }
-});
 
 function setDOBRange() {
   const dob = document.getElementById("dob");
