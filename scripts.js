@@ -34,6 +34,18 @@ function displayDate() {
     if (confirm(message)) {
       if (fnameField) fnameField.value = savedName;
       greetingDiv.innerHTML = "Hello " + savedName + ", welcome back!";
+      nonSecureFields.forEach(id => {
+        const el = document.getElementById(id);
+        const val = localStorage.getItem(id);
+        if (el && val) el.value = val;
+      });
+      ["gender","race","insurance"].forEach(name => {
+        const val = localStorage.getItem(name);
+        if (val) {
+          const radio = document.querySelector(`input[name="${name}"][value="${val}"]`);
+          if (radio) radio.checked = true;
+        }
+      });
     } else {
       deleteCookie("fname");
       localStorage.clear();
@@ -41,22 +53,6 @@ function displayDate() {
     }
   } else {
     greetingDiv.innerHTML = "Hello New User!";
-  }
-  if (confirm(message)) {
-    if (fnameField) fnameField.value = savedName;
-    greetingDiv.innerHTML = "Hello " + savedName + ", welcome back!";
-    nonSecureFields.forEach(id => {
-      const el = document.getElementById(id);
-      const val = localStorage.getItem(id);
-      if (el && val) el.value = val;
-    });
-    ["gender","race","insurance"].forEach(name => {
-      const val = localStorage.getItem(name);
-      if (val) {
-        const radio = document.querySelector(`input[name="${name}"][value="${val}"]`);
-        if (radio) radio.checked = true;
-      }
-    });
   }
 }
 
